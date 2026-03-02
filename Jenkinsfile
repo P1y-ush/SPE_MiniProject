@@ -5,8 +5,9 @@ pipeline {
         maven 'Maven'
     }
 
+    // Webhook trigger (Remove pollSCM)
     triggers {
-        pollSCM('* * * * *')
+        githubPush()
     }
 
     stages {
@@ -27,6 +28,27 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
+        }
+    }
+
+    post {
+
+        success {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+
+            emailext (
+                subject: "BUILD SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "The build completed successfully.\n\nCheck Jenkins for details.",
+                to: "sharma.piyush4019@gmail.com"
+            )
+        }
+
+        failure {
+            emailext (
+                subject: "BUILD FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "The build has failed.\n\nCheck Jenkins immediately.",
+                to: "sharma.piyush4019@gmail.com"
+            )
         }
     }
 }
