@@ -39,7 +39,7 @@ pipeline {
             emailext (
                 subject: "BUILD SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "The build completed successfully.\n\nCheck Jenkins for details.",
-                to: "sharma.piyush4019@gmail.com"
+                to: "piyushnnl1233@gmail.com"
             )
         }
 
@@ -47,7 +47,7 @@ pipeline {
             emailext (
                 subject: "BUILD FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "The build has failed.\n\nCheck Jenkins immediately.",
-                to: "sharma.piyush4019@gmail.com"
+                to: "piyushnnl1233@gmail.com"
             )
         }
     }
