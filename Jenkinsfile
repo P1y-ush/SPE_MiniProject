@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE = "your_dockerhub_username/scientific-calculator"
+        DOCKER_IMAGE = "p1yush123/scientific-calculator"
     }
 
     stages {
