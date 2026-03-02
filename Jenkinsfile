@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/P1y-ush/SPE_MiniProject.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
