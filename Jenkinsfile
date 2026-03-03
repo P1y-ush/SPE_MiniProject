@@ -64,12 +64,12 @@ pipeline {
                 sh 'ansible-playbook ansible/deploy.yml'
             }
         }
-        }
-    }
+
+    }   // ← Only ONE closing brace for stages
 
     post {
         success {
-            emailext (
+            emailext(
                 subject: "BUILD SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Build successful. Docker image pushed and deployed.",
                 to: "sharma.piyush4019@gmail.com"
@@ -77,7 +77,7 @@ pipeline {
         }
 
         failure {
-            emailext (
+            emailext(
                 subject: "BUILD FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Build failed. Check Jenkins.",
                 to: "sharma.piyush4019@gmail.com"
