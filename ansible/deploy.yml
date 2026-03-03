@@ -1,0 +1,26 @@
+---
+- name: Deploy Scientific Calculator
+  hosts: localhost
+  become: false
+
+  tasks:
+
+    - name: Remove existing container if running
+      command: docker rm -f scientific-calculator
+      ignore_errors: yes
+
+    - name: Pull Docker Image from DockerHub
+      command: docker pull p1yush123/scientific-calculator:latest
+      register: docker_pull_result
+
+    - name: Display Docker Pull Result
+      debug:
+        var: docker_pull_result.stdout
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+
+    - name: Run container
+      command: docker run -d --name scientific-calculator p1yush123/scientific-calculator:latest

@@ -59,14 +59,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy with Ansible') {
             steps {
-                sh '''
-                docker stop scientific-calculator || true
-                docker rm scientific-calculator || true
-                docker run -d -p 8081:8080 --name scientific-calculator $DOCKER_IMAGE:latest
-                '''
+                sh 'ansible-playbook ansible/deploy.yml'
             }
+        }
         }
     }
 

@@ -24,11 +24,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!-- 👇 ADD THIS BUILD SECTION -->
+    
     <build>
         <plugins>
-
             <!-- Make JAR executable -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
