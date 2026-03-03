@@ -37,8 +37,7 @@ public class Main {
                     System.out.println("Result: " +
                             calc.power(
                                     Double.parseDouble(args[1]),
-                                    Double.parseDouble(args[2])
-                            ));
+                                    Double.parseDouble(args[2])));
                     break;
 
                 default:
