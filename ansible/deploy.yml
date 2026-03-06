@@ -23,4 +23,4 @@
         state: started
 
     - name: Run container
-      command: docker run -d --name scientific-calculator p1yush123/scientific-calculator:latestfic
+      command: docker run -d --name scientific-calculator p1yush123/scientific-calculator:latest
