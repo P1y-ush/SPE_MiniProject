@@ -1,50 +1,61 @@
 package com.calc;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        Calculator calc = new Calculator();
+        Scanner scanner = new Scanner(System.in);
+        Calculator calculator = new Calculator();
 
-        if (args.length == 0) {
-            System.out.println("Usage:");
-            System.out.println("sqrt <number>");
-            System.out.println("fact <number>");
-            System.out.println("log <number>");
-            System.out.println("pow <base> <exponent>");
-            return;
-        }
+        while (true) {
 
-        try {
-            switch (args[0]) {
+            System.out.println("\nHello and Welcome to Scientific Calculator");
+            System.out.println("1. Square Root");
+            System.out.println("2. Factorial");
+            System.out.println("3. Natural Log");
+            System.out.println("4. Power");
+            System.out.println("5. Exit");
 
-                case "sqrt":
-                    System.out.println("Result: " +
-                            calc.squareRoot(Double.parseDouble(args[1])));
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter number: ");
+                    double num = scanner.nextDouble();
+                    System.out.println("Result: " + calculator.squareRoot(num));
                     break;
 
-                case "fact":
-                    System.out.println("Result: " +
-                            calc.factorial(Integer.parseInt(args[1])));
+                case 2:
+                    System.out.print("Enter number: ");
+                    int factNum = scanner.nextInt();
+                    System.out.println("Result: " + calculator.factorial(factNum));
                     break;
 
-                case "log":
-                    System.out.println("Result: " +
-                            calc.naturalLog(Double.parseDouble(args[1])));
+                case 3:
+                    System.out.print("Enter number: ");
+                    double logNum = scanner.nextDouble();
+                    System.out.println("Result: " + calculator.naturalLog(logNum));
                     break;
 
-                case "pow":
-                    System.out.println("Result: " +
-                            calc.power(
-                                    Double.parseDouble(args[1]),
-                                    Double.parseDouble(args[2])));
+                case 4:
+                    System.out.print("Enter base: ");
+                    double base = scanner.nextDouble();
+                    System.out.print("Enter exponent: ");
+                    double exp = scanner.nextDouble();
+                    System.out.println("Result: " + calculator.power(base, exp));
                     break;
+
+                case 5:
+                    System.out.println("Exiting...");
+                    System.exit(0);
 
                 default:
-                    System.out.println("Invalid operation");
+                    System.out.println("Invalid choice");
             }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
         }
     }
 }
