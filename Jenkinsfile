@@ -69,38 +69,19 @@ pipeline {
     }   // ← Only ONE closing brace for stages
 
     post {
-
         success {
-            mail(
-                to: 'sharma.piyush4019@gmail.com',
+            emailext(
                 subject: "BUILD SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
-    Build Successful!
-
-    Job Name: ${env.JOB_NAME}
-    Build Number: ${env.BUILD_NUMBER}
-
-    Docker Image: ${env.DOCKER_IMAGE}:latest
-
-    Check build details:
-    ${env.BUILD_URL}
-    """
+                body: "Build successful. Docker image pushed and deployed.",
+                to: "sharma.piyush4019@gmail.com"
             )
         }
 
         failure {
-            mail(
-                to: 'sharma.piyush4019@gmail.com',
+            emailext(
                 subject: "BUILD FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
-    Build Failed!
-
-    Job Name: ${env.JOB_NAME}
-    Build Number: ${env.BUILD_NUMBER}
-
-    Check Jenkins Console:
-    ${env.BUILD_URL}
-    """
+                body: "Build failed. Check Jenkins.",
+                to: "sharma.piyush4019@gmail.com"
             )
         }
     }
