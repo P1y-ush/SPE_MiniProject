@@ -66,7 +66,7 @@ pipeline {
             }
         }
 
-    }   // ← Only ONE closing brace for stages
+    }
 
     post {
         success {
