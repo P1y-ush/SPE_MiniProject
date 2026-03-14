@@ -19,18 +19,6 @@ public class Main {
             System.out.println("5. Exit");
 
             System.out.print("Enter your choice: ");
-
-            // Check if input is available
-            if(!scanner.hasNextInt()){
-                System.out.println("Waiting for input...");
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                continue;
-            }
-
             int choice = scanner.nextInt();
 
             switch (choice) {
