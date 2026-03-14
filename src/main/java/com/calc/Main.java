@@ -32,7 +32,7 @@ public class Main {
                 case 2:
                     System.out.print("Enter number: ");
                     int factNum = scanner.nextInt();
-                    System.out.println("Result: " + calculator.factorial(factNum));
+                    System.out.println("Result: " + calculator.factorial(factNum))
                     break;
 
                 case 3:
